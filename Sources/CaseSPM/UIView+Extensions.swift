@@ -24,10 +24,7 @@ public extension UIView {
   }
   
   func fill(_ constraint : constraintType, with space : CGFloat? = nil) {
-    guard let superview = superview else {
-      print("‼️ Buracutils: superView cannot be nil!")
-      return
-    }
+    guard let superview = superview else { return }
     translatesAutoresizingMaskIntoConstraints = false
     var spaceString = ""
     if let space = space {
@@ -55,4 +52,5 @@ public extension UIView {
     views.forEach{addSubview($0)}
   }
 }
+
 #endif
