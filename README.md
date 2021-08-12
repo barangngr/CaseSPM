@@ -1,3 +1,3 @@
 # CaseSPM
 
-A description of this package.
+This package is for job interviews only.
