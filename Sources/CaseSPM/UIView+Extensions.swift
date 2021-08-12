@@ -13,6 +13,16 @@ public extension UIView {
     case vertically,horizontally,all
   }
   
+  func addConstraints(_ format: String, views: UIView...) {
+    var viewsDictionary = [String: UIView]()
+    for (index, view) in views.enumerated() {
+      let key = "v\(index)"
+      viewsDictionary[key] = view
+      view.translatesAutoresizingMaskIntoConstraints = false
+    }
+    addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
+  }
+  
   func fill(_ constraint : constraintType, with space : CGFloat? = nil) {
     guard let superview = superview else {
       print("‼️ Buracutils: superView cannot be nil!")
