@@ -36,6 +36,20 @@ public extension UICollectionView {
     return cell
   }
   
+  ///   Dequeue reusable UICollectionReusableView using class name.
+  ///
+  /// - Parameters:
+  ///   - kind: the kind of supplementary view to retrieve. This value is defined by the layout object.
+  ///   - name: UICollectionReusableView type.
+  ///   - indexPath: location of cell in collectionView.
+  /// - Returns: UICollectionReusableView object with associated class name.
+  func dequeueReusableSupplementaryView<T: UICollectionReusableView>(ofKind kind: String, withClass name: T.Type, for indexPath: IndexPath) -> T {
+    guard let cell = dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: name), for: indexPath) as? T else {
+      fatalError("Couldn't find UICollectionReusableView for \(String(describing: name))")
+    }
+    return cell
+  }
+  
   ///   Register UICollectionReusableView using class name.
   ///
   /// - Parameters:
